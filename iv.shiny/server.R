@@ -13,11 +13,11 @@ shinyServer(function(input, output) {
     c(fullEst[2], olsEst[2], ivEst[2])
   }
   output$main_plot <- renderPlot({
-    fits <- sapply(seq(0, 1, length = 100), ivSim, input$n, input$strength)
+    fits <- sapply(seq(0, 1, length = 25), ivSim, input$n, input$strength)
     results <- data.frame(coef = c(fits[1, ], fits[2, ], fits[3, ]),
                           Estimator = c(rep(c("Full Model", "OLS", "2SLS"), 
                             each = 100)), 
-                          r = rep(seq(0, 1, length = 100), 3))
+                          r = rep(seq(0, 1, length = 25), 3))
     p <- ggplot(results, aes(x = r, y = coef, color = Estimator)) + 
             geom_line() + geom_hline(yintercept = 1) + 
             scale_x_continuous("Correlation between x* and c") +
