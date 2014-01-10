@@ -16,7 +16,7 @@ shinyServer(function(input, output) {
     fits <- sapply(seq(0, 1, length = 25), ivSim, input$n, input$strength)
     results <- data.frame(coef = c(fits[1, ], fits[2, ], fits[3, ]),
                           Estimator = c(rep(c("Full Model", "OLS", "2SLS"), 
-                            each = 100)), 
+                            each = 25)), 
                           r = rep(seq(0, 1, length = 25), 3))
     p <- ggplot(results, aes(x = r, y = coef, color = Estimator)) + 
             geom_line() + geom_hline(yintercept = 1) + 
