@@ -21,7 +21,4 @@ shinyUI(pageWithSidebar(
                     step = 1,
                     value = 0)),
     mainPanel(
-        textOutput("eV"),
-        textOutput("buyLow"),
-        textOutput("buyMed"),
-        textOutput("buyHigh"))))
+        textOutput("eV"))))
