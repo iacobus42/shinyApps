@@ -1,9 +1,7 @@
 shinyServer(function(input, output) {
-  getExpectedValue <- function(low, med, high) {
-      totalCharacters = 37
-      maxNumLow = 7
-      maxNumMed = 25
-      maxNumHigh = 5
+  getExpectedValue <- function(low, med, high, 
+                               maxNumLow, maxNumMed, maxNumHigh) {
+      totalCharacters = maxNumLow + maxNumMed + maxNumHigh
       priceLow = 200
       priceMed = 400
       priceHigh = 600
@@ -16,7 +14,11 @@ shinyServer(function(input, output) {
       low <- input$nLow
       med <- input$nMed
       high <- input$nHigh
-      ev <- getExpectedValue(low, med, high)
+      maxLow <- input$maxLow
+      maxMed <- input$maxMed
+      maxHigh <- input$maxHigh
+      ev <- getExpectedValue(low, med, high, 
+                             maxLow, maxMed, maxHigh)
       paste("The expected value of a random draw is ", round(ev, 2), sep = "")
 	})
 })
